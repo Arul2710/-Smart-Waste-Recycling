@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScrap | Smart Waste Recycling — Recycle More, Waste Less</title>
+    <meta name="description" content="Explore EcoScrap's recycling-first homepage: household, corporate and society scrap collection programmes with environmental impact metrics and customer stories.">
+    <meta property="og:title" content="EcoScrap | Smart Waste Recycling — Recycle More, Waste Less">
+    <meta property="og:description" content="Explore EcoScrap's recycling-first homepage: household, corporate and society scrap collection programmes with environmental impact metrics and customer stories.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#16A34A">
+    <script>try{if(localStorage.getItem("ecoscrap-theme")==="dark"||(!localStorage.getItem("ecoscrap-theme")&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}else{document.documentElement.style.colorScheme="light"}if(localStorage.getItem("ecoscrap-dir")==="rtl"){document.documentElement.setAttribute("dir","rtl")}}catch(e){}</script>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        primaryDark: '#14532D',
+        primaryLight: '#86EFAC',
+        lightBg: '#F0FDF4',
+        darkBg: '#0B1220'
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    }
+  }
+};</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/rtl.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</head>
+<body class="bg-lightBg dark:bg-darkBg text-gray-800 dark:text-gray-200 font-sans flex flex-col min-h-screen antialiased">
+<header class="es-nav">
+    <div class="container-es">
+        <div class="es-nav__inner">
+            <a href="index.html" class="es-logo" aria-label="EcoScrap home">
+                <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+                <span class="es-logo__text">
+                    <span class="es-logo__name">EcoScrap</span>
+                    <span class="es-logo__tag">Scrap · To · Cash</span>
+                </span>
+            </a>
+
+            <nav class="es-nav__links" aria-label="Primary navigation">
+                <div class="es-drop" data-dropdown>
+                    <button type="button" class="es-nav__link" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        Home <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu" role="menu">
+                        <a class="es-drop__item" href="index.html" role="menuitem"><i class="fa-solid fa-house"></i> Home 1 <span class="ms-auto text-xs text-gray-400 dark:text-gray-500">Classic</span></a>
+                        <a class="es-drop__item" href="home2.html" role="menuitem"><i class="fa-solid fa-sprout"></i> Home 2 <span class="ms-auto text-xs text-gray-400 dark:text-gray-500">Fresh</span></a>
+                    </div>
+                </div>
+                <a href="about.html" class="es-nav__link">About</a><a href="services.html" class="es-nav__link">Services</a><a href="rate-card.html" class="es-nav__link">Rate Card</a><a href="how-it-works.html" class="es-nav__link">How It Works</a><a href="blog.html" class="es-nav__link">Blog</a><a href="contact.html" class="es-nav__link">Contact</a>
+                <div class="es-drop" data-dropdown>
+                    <button type="button" class="es-nav__link" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-gauge-high"></i> Dashboard <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu" role="menu">
+                        <a class="es-drop__item" href="customer-dashboard.html" role="menuitem"><i class="fa-solid fa-user"></i> User</a>
+                        <a class="es-drop__item" href="admin-dashboard.html" role="menuitem"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="es-nav__actions">
+                <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle aria-label="Toggle RTL layout" title="Toggle RTL layout">
+                    <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+                </button>
+                <button type="button" class="es-iconbtn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                </button>
+
+                <!-- Guest actions: shown only when no EcoScrap session exists -->
+    <div class="flex items-center gap-1.5" data-auth-guest>
+    <a href="login.html" class="es-nav__link" title="Login">Login</a>
+    <a href="signup.html" class="es-btn es-btn--primary es-btn--sm">Sign Up</a>
+    </div>
+
+
+                <!-- Account dropdown: shown only when logged in -->
+                <div class="es-drop" data-dropdown data-auth-user hidden>
+                    <button type="button" class="es-nav__link es-nav__link--btn" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        <span class="es-avatar" data-user-initials>GU</span>
+                        <span class="hidden xl:inline max-w-[8rem] truncate" data-user-name>Account</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu es-drop__menu--end" role="menu">
+                        <div class="px-3 py-2.5 border-b border-gray-100 dark:border-gray-700">
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate" data-user-name>Account</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500 truncate" data-user-email>you@example.com</p>
+                        </div>
+                        <a class="es-drop__item" href="customer-dashboard.html" role="menuitem"><i class="fa-solid fa-gauge-high"></i> My Dashboard</a>
+                        <a class="es-drop__item" href="admin-dashboard.html" role="menuitem"><i class="fa-solid fa-user-shield"></i> Admin Console</a>
+                        <a class="es-drop__item" href="rate-card.html" role="menuitem"><i class="fa-solid fa-tags"></i> Today's Rates</a>
+                        <div class="es-drop__sep"></div>
+                        <button type="button" class="es-drop__item !text-red-500 dark:!text-red-400" data-auth-logout role="menuitem"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="es-burger" class="es-burger es-iconbtn" aria-label="Open main menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="es-mobile-nav" class="es-mobile bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+        <div class="container-es py-5 space-y-1">
+            <p class="es-mobile__label px-3 pb-1">Home</p>
+            <div class="ps-1">
+                <button type="button" class="es-mobile__link" data-mobile-sub="mobile-home" aria-expanded="false">
+                    <i class="fa-solid fa-house"></i> Home <i class="fa-solid fa-chevron-down ms-auto text-xs"></i>
+                </button>
+                <div id="mobile-home" class="es-mobile__sub">
+                    <a href="index.html" class="es-mobile__link"><i class="fa-solid fa-angles-right"></i> Home 1 — Classic</a>
+                    <a href="home2.html" class="es-mobile__link is-active"><i class="fa-solid fa-angles-right"></i> Home 2 — Fresh</a>
+                </div>
+            </div>
+            <p class="es-mobile__label px-3 pt-3 pb-1">Menu</p>
+            <a href="about.html" class="es-mobile__link"><i class="fa-solid fa-circle-info"></i> About</a><a href="services.html" class="es-mobile__link"><i class="fa-solid fa-truck-pickup"></i> Services</a><a href="rate-card.html" class="es-mobile__link"><i class="fa-solid fa-tags"></i> Rate Card</a><a href="how-it-works.html" class="es-mobile__link"><i class="fa-solid fa-list-check"></i> How It Works</a><a href="blog.html" class="es-mobile__link"><i class="fa-solid fa-newspaper"></i> Blog</a><a href="contact.html" class="es-mobile__link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <button type="button" class="es-mobile__link" data-mobile-sub="mobile-dashboard" aria-haspopup="true" aria-controls="mobile-dashboard" aria-expanded="false">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard <i class="fa-solid fa-chevron-down ms-auto text-xs"></i>
+            </button>
+            <div id="mobile-dashboard" class="es-mobile__sub">
+                <a href="customer-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user"></i> User</a>
+                <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin</a>
+            </div>
+            <div class="flex items-center gap-2 pt-4">
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><i class="fa-solid fa-language"></i> <span data-rtl-label>RTL</span></button>
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke"></i> <span data-theme-label>Dark Mode</span></button>
+            </div>
+            <div class="flex gap-2 pt-4" data-auth-guest>
+                <a href="login.html" class="es-btn es-btn--ghost es-btn--block">Login</a>
+                <a href="signup.html" class="es-btn es-btn--primary es-btn--block">Sign Up</a>
+            </div>
+            <div class="pt-2 space-y-1" data-auth-user hidden>
+                <p class="es-mobile__label px-3 pt-2">Account</p>
+                <a href="customer-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-gauge-high"></i> My Dashboard</a>
+                <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin Console</a>
+                <button type="button" class="es-mobile__link !text-red-500 dark:!text-red-400" data-auth-logout><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="flex-grow">
+
+<!-- 1 · Hero (recycling background) -->
+<section data-section="1" class="hero text-center">
+    <div class="hero__media" style="background-image:url('assets/images/hero-scrap-metal.jpg')" role="img" aria-label="Sorted scrap metal being processed for recycling and waste reduction"></div>
+    <div class="hero__overlay hero__overlay--green"></div>
+    <div class="container-es relative z-10 py-24 lg:py-32">
+        <span class="es-eyebrow es-reveal"><i class="fa-solid fa-leaf"></i> Smart Waste, Better Planet</span>
+        <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight es-reveal" data-reveal-delay="80">Every Kilogram Recycled <span class="text-primaryLight">Counts Twice</span></h1>
+        <p class="mx-auto mt-6 text-lg text-gray-200/95 max-w-2xl es-reveal" data-reveal-delay="160">Earn the best value for your paper, metal, plastic and e-waste while keeping thousands of tonnes out of landfill each year — all from the comfort of your home.</p>
+        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3 es-reveal" data-reveal-delay="240">
+            <a href="customer-dashboard.html" class="es-btn es-btn--primary es-btn--lg"><i class="fa-solid fa-truck-fast"></i> Book a Pickup Now</a>
+            <a href="how-it-works.html" class="es-btn es-btn--glass es-btn--lg">How It Works <i class="fa-solid fa-arrow-right rtl-flip"></i></a>
+        </div>
+        <div class="mt-14 grid grid-cols-3 gap-4 max-w-2xl mx-auto es-reveal" data-reveal-delay="320">
+            <div class="bg-white/10 border border-white/15 rounded-2xl px-4 py-5 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-extrabold text-white"><span data-count-to="5200000" data-count-suffix=" KG+">5.2M KG+</span></p>
+                <p class="text-xs text-gray-300 mt-1">Recycled to date</p>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-2xl px-4 py-5 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-extrabold text-white"><span data-count-to="84000" data-count-suffix="+">84,000+</span></p>
+                <p class="text-xs text-gray-300 mt-1">Tree-equivalents saved</p>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-2xl px-4 py-5 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-extrabold text-white"><span data-count-to="42000" data-count-suffix="+">42,000+</span></p>
+                <p class="text-xs text-gray-300 mt-1">Happy households</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 · Scrap collection services -->
+<section data-section="2" class="section bg-lightBg dark:bg-[#0d1726]">
+    <div class="container-es">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="es-eyebrow es-reveal">Our Services</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">Scrap Collection, Sized to You</h2>
+            <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="120">Three collection programmes built around how much scrap you have and where you're producing it.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-7 mt-12">
+            <article class="es-card es-card--hover es-reveal">
+                <div class="es-card__body">
+                    <div class="flex items-start justify-between">
+                        <span class="es-card__icon"><i class="fa-solid fa-house-chimney"></i></span>
+                        <span class="es-badge es-badge--green">Most popular</span>
+                    </div>
+                    <h3 class="es-card__title">Household Pickup</h3>
+                    <p class="es-card__text">Weekly or one-off doorstep collection for apartments, houses and flats. No minimum quantity — one box or a full balcony works.</p>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Same-day slot options</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>UPI or cash on the spot</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Proof of disposal for e-waste</li>
+                    </ul>
+                    <div class="es-card__foot"><a href="services.html" class="es-btn es-btn--primary es-btn--sm es-btn--block">Book Household Pickup</a></div>
+                </div>
+            </article>
+            <article class="es-card es-card--hover es-reveal" data-reveal-delay="80">
+                <div class="es-card__body">
+                    <div class="flex items-start justify-between">
+                        <span class="es-card__icon"><i class="fa-solid fa-building"></i></span>
+                        <span class="es-badge es-badge--blue">Business</span>
+                    </div>
+                    <h3 class="es-card__title">Corporate Clearouts</h3>
+                    <p class="es-card__text">One-time and recurring clearance for offices and retail — cardboard, e-waste, IT assets and old equipment with full documentation.</p>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>GST invoice with every job</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Data-wiped IT asset pickup</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Deferred scheduling on request</li>
+                    </ul>
+                    <div class="es-card__foot"><a href="services.html#corporate" class="es-btn es-btn--primary es-btn--sm es-btn--block">Book Corporate Clearout</a></div>
+                </div>
+            </article>
+            <article class="es-card es-card--hover es-reveal" data-reveal-delay="160">
+                <div class="es-card__body">
+                    <div class="flex items-start justify-between">
+                        <span class="es-card__icon"><i class="fa-solid fa-people-group"></i></span>
+                        <span class="es-badge es-badge--amber">Community</span>
+                    </div>
+                    <h3 class="es-card__title">Society Scrap Drives</h3>
+                    <p class="es-card__text">Apartment societies and RWAs host a scheduled drive — we set up a weighing station, collect from every flat and split earnings instantly.</p>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1.5">
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Per-flat payout reports</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Certificates for green drives</li>
+                        <li><i class="fa-solid fa-check text-primary me-2"></i>Zero upfront cost to society</li>
+                    </ul>
+                    <div class="es-card__foot"><a href="services.html#society" class="es-btn es-btn--primary es-btn--sm es-btn--block">Organise a Drive</a></div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 3 · Recyclable material categories -->
+<section data-section="3" class="section bg-white dark:bg-gray-900">
+    <div class="container-es">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="es-eyebrow es-reveal">Recyclables</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">What We Recycle</h2>
+            <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="120">Six material streams, sorted and dispatched to the right facility within 48 hours.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-12" data-render="categories"></div>
+    </div>
+</section>
+
+<!-- 4 · How It Works -->
+<section data-section="4" class="section bg-lightBg dark:bg-[#0d1726]">
+    <div class="container-es">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="es-eyebrow es-reveal">Four Steps</span>
+                <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">From Booking to Bank Credit in One Visit</h2>
+                <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="120">No back-and-forth with dealers, no guesswork on weights. Follow the live status from your dashboard and get paid within minutes of weighing.</p>
+                <div class="mt-9 space-y-6 es-reveal" data-reveal-delay="180">
+                    <div class="flex gap-4">
+                        <span class="es-step__num !h-12 !w-12 !text-base">1</span>
+                        <div><h3 class="font-bold text-gray-900 dark:text-white">Select scrap &amp; book a slot</h3><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Choose categories and an arrival window that suits you.</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="es-step__num !h-12 !w-12 !text-base">2</span>
+                        <div><h3 class="font-bold text-gray-900 dark:text-white">Collector reaches your door</h3><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Get a live ETA with the collector's route on your dashboard.</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="es-step__num !h-12 !w-12 !text-base">3</span>
+                        <div><h3 class="font-bold text-gray-900 dark:text-white">Weigh &amp; verify materials</h3><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Certified digital scale, weight confirmed beside the vehicle.</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="es-step__num !h-12 !w-12 !text-base">4</span>
+                        <div><h3 class="font-bold text-gray-900 dark:text-white">Get paid instantly</h3><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">UPI settles in seconds; bank transfer the same working day.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative es-reveal" data-reveal-delay="120">
+                <div class="es-card__media rounded-3xl aspect-[4/3] overflow-hidden">
+                    <img src="assets/images/scale-worker.jpg" alt="Recycling worker in uniform weighing compressed plastic waste on a digital scale at a scrap facility" loading="lazy" width="800" height="560">
+                </div>
+                <div class="absolute -bottom-6 -left-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl px-5 py-4 flex items-center gap-4 border border-gray-100 dark:border-gray-700">
+                    <span class="es-card__icon"><i class="fa-solid fa-video"></i></span>
+                    <div><p class="font-bold text-gray-900 dark:text-white text-sm">Live status tracking</p><p class="text-xs text-gray-500 dark:text-gray-400">Request → Route → Verify → Paid</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5 · Environmental impact + testimonials -->
+<section data-section="5" class="section bg-white dark:bg-gray-900">
+    <div class="container-es">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="es-eyebrow es-reveal">Impact &amp; Trust</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">The Real-World Difference</h2>
+            <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="120">Numbers you can measure, and stories you can trust — from the households that recycle with us.</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+            <div class="es-stat es-reveal"><span class="es-stat__icon bg-green-100 text-primary"><i class="fa-solid fa-weight-scale"></i></span><div><p class="es-stat__value" data-count-to="5.2" data-count-decimals="1" data-count-suffix="M">5.2M</p><p class="es-stat__label">KG recycled</p></div></div>
+            <div class="es-stat es-reveal" data-reveal-delay="60"><span class="es-stat__icon bg-blue-100 text-blue-600"><i class="fa-solid fa-tree-city"></i></span><div><p class="es-stat__value" data-count-to="84" data-count-suffix="K">84K</p><p class="es-stat__label">Trees saved</p></div></div>
+            <div class="es-stat es-reveal" data-reveal-delay="120"><span class="es-stat__icon bg-amber-100 text-amber-600"><i class="fa-solid fa-bolt"></i></span><div><p class="es-stat__value" data-count-to="3.1" data-count-decimals="1" data-count-suffix="M">3.1M</p><p class="es-stat__label">KWH energy saved</p></div></div>
+            <div class="es-stat es-reveal" data-reveal-delay="180"><span class="es-stat__icon bg-violet-100 text-violet-600"><i class="fa-solid fa-car"></i></span><div><p class="es-stat__value" data-count-to="1.6" data-count-decimals="1" data-count-suffix="M">1.6M</p><p class="es-stat__label">KM of trips avoided</p></div></div>
+        </div>
+
+        <div class="mt-16 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+                <span class="es-eyebrow es-reveal">Testimonials</span>
+                <h3 class="es-title mt-4 text-2xl md:text-3xl es-reveal" data-reveal-delay="60">What Customers Say</h3>
+                <div class="relative mt-8 es-reveal" data-reveal-delay="120" data-slider>
+                    <div class="overflow-hidden rounded-2xl">
+                        <div class="es-slider__track" data-slider-track>
+                            "
+<div class="px-1" data-slider-slide>
+    <div class="es-panel"><div class="flex gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">“I booked a pickup on a Sunday morning and the collector reached my gate within 40 minutes. Weighing was done on a calibrated scale in front of me and the payment hit my UPI immediately.”</p>
+    <div class="flex items-center gap-3 mt-5"><div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">RM</div><div><p class="font-bold text-gray-900 dark:text-white">Rohit Mehra</p><p class="text-xs text-gray-500 dark:text-gray-400">Flat owner, Whitefield</p></div></div></div>
+</div>
+<div class="px-1" data-slider-slide>
+    <div class="es-panel"><div class="flex gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">“We ran a society-wide scrap drive with EcoScrap. Around 380 kg was collected in a single morning and the payout summary was in our hands the same day.”</p>
+    <div class="flex items-center gap-3 mt-5"><div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">FS</div><div><p class="font-bold text-gray-900 dark:text-white">Fatima Sheikh</p><p class="text-xs text-gray-500 dark:text-gray-400">Society secretary, Powai</p></div></div></div>
+</div>
+<div class="px-1" data-slider-slide>
+    <div class="es-panel"><div class="flex gap-1 text-amber-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">“The E-Waste pickup is what sold me. Two old laptops and a desktop went to a certified recycler instead of a scrap bin, and I got a fair rate for the working parts.”</p>
+    <div class="flex items-center gap-3 mt-5"><div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">AN</div><div><p class="font-bold text-gray-900 dark:text-white">Arjun Nair</p><p class="text-xs text-gray-500 dark:text-gray-400">IT professional, Kothrud</p></div></div></div>
+</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-6">
+                        <div class="flex gap-2" data-slider-dots></div>
+                        <div class="flex gap-2">
+                            <button type="button" class="es-iconbtn" data-slider-prev aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button type="button" class="es-iconbtn" data-slider-next aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="es-panel es-panel--hover es-reveal text-center"><span class="es-pin mx-auto mb-3"><i class="fa-solid fa-medal text-xl"></i></span><h4 class="font-bold text-gray-900 dark:text-white">Certified Recyclers</h4><p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Every stream moves through a audited, licensed facility.</p></div>
+                <div class="es-panel es-panel--hover es-reveal text-center" data-reveal-delay="60"><span class="es-pin mx-auto mb-3"><i class="fa-solid fa-shield-halved text-xl"></i></span><h4 class="font-bold text-gray-900 dark:text-white">Verified Weighing</h4><p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Calibrated scales with weight shown before payment.</p></div>
+                <div class="es-panel es-panel--hover es-reveal text-center" data-reveal-delay="120"><span class="es-pin mx-auto mb-3"><i class="fa-solid fa-handshake-angle text-xl"></i></span><h4 class="font-bold text-gray-900 dark:text-white">Fair Rates</h4><p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Published live without hidden deductions.</p></div>
+                <div class="es-panel es-panel--hover es-reveal text-center" data-reveal-delay="180"><span class="es-pin mx-auto mb-3"><i class="fa-solid fa-headset text-xl"></i></span><h4 class="font-bold text-gray-900 dark:text-white">Local Support</h4><p class="text-sm text-gray-500 dark:text-gray-400 mt-2">WhatsApp and call support, 7 days a week.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6 · Service locations + final CTA -->
+<section data-section="6" id="locations" class="section bg-lightBg dark:bg-[#0d1726]">
+    
+        
+        <div class="relative overflow-hidden rounded-3xl bg-primaryDark mt-16 es-reveal text-center">
+            <div class="absolute inset-0 opacity-15 hero__media" style="background-image:url('assets/images/join-movement.webp')"></div>
+            <div class="relative z-10 px-6 sm:px-12 py-14 sm:py-16 text-white">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Join the Recycling Movement</h2>
+                <p class="mt-4 text-gray-200 max-w-xl mx-auto">Create a free account, schedule your first doorstep pickup and watch your scrap become societal value — cash for you, materials for the economy.</p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+                    <a href="signup.html" class="es-btn es-btn--primary es-btn--lg">Create Free Account</a>
+                    <a href="customer-dashboard.html" class="es-btn es-btn--white es-btn--lg"><i class="fa-solid fa-calendar-check"></i> Schedule Pickup</a>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+</main>
+<footer class="bg-primaryDark text-white pt-16 pb-8 mt-auto">
+    <div class="container-es">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-10 mb-12">
+            <div class="xl:col-span-2 max-w-md">
+                <a href="index.html" class="flex items-center gap-2 mb-5">
+                    <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+                    <span class="text-2xl font-bold text-white">EcoScrap</span>
+                </a>
+                <p class="text-gray-300 mb-6 text-sm leading-relaxed">Your trusted local waste pickup and scrap dealer. Book a doorstep pickup, get transparent weighing and instant payment — while keeping waste out of landfill.</p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="about.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>About Us</a></li>
+                    <li><a href="services.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Services</a></li>
+                    <li><a href="rate-card.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Scrap Rates</a></li>
+                    <li><a href="how-it-works.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>How It Works</a></li>
+                    <li><a href="blog.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Scrap Categories</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="rate-card.html#paper" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Paper &amp; Cardboard</a></li>
+                    <li><a href="rate-card.html#metal" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Metal &amp; Aluminum</a></li>
+                    <li><a href="rate-card.html#plastic" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Plastic &amp; Packaging</a></li>
+                    <li><a href="rate-card.html#ewaste" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>E-Waste</a></li>
+                    <li><a href="rate-card.html#appliance" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Old Appliances</a></li>
+                    <li><a href="rate-card.html#battery" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Batteries</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Service Locations</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Delhi NCR</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Mumbai</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Bangalore</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Pune · Hyderabad · Chennai</a></li>
+                </ul>
+                <div class="mt-5 space-y-2 text-sm text-gray-300">
+                    <p><i class="fa-solid fa-phone text-primaryLight me-2"></i>1800-266-5432</p>
+                    <p><i class="fa-solid fa-envelope text-primaryLight me-2"></i>hello@ecoscrap.in</p>
+                    <p><i class="fa-solid fa-clock text-primaryLight me-2"></i>Mon – Sun · 7 AM – 9 PM</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Newsletter</h4>
+                <p class="text-gray-300 text-sm mb-4">Get rate updates, recycling tips and pickup offers. No spam.</p>
+                <form id="newsletter-form" class="flex flex-col gap-3">
+                    <input type="email" name="email" placeholder="Your email address" class="es-input !bg-white/10 !border-white/25 !text-white placeholder:!text-gray-300" aria-label="Email for newsletter">
+                    <button type="submit" class="es-btn es-btn--primary es-btn--block">Subscribe</button>
+                </form>
+                <p class="text-xs text-gray-400 mt-3">Join 8,200+ households already recycling with us.</p>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-7 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
+            <p>&copy; 2026 EcoScrap. All rights reserved. Made for a cleaner India.</p>
+            <div class="flex gap-5">
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms &amp; Conditions</a>
+                <a href="#" class="hover:text-white transition">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

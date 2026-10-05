@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | EcoScrap</title>
+    <meta name="description" content="Manage pickup requests, customers, collectors, rate card, payouts, locations and reports.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#16A34A">
+    <script>try{if(localStorage.getItem("ecoscrap-theme")==="dark"||(!localStorage.getItem("ecoscrap-theme")&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}else{document.documentElement.style.colorScheme="light"}if(localStorage.getItem("ecoscrap-dir")==="rtl"){document.documentElement.setAttribute("dir","rtl")}}catch(e){}</script>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        primaryDark: '#14532D',
+        primaryLight: '#86EFAC',
+        lightBg: '#F0FDF4',
+        darkBg: '#0B1220'
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    }
+  }
+};</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/rtl.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/dash-data.js" defer></script>
+    <script src="js/admin-dashboard.js" defer></script>
+</head>
+<body data-no-backtop class="bg-slate-50 dark:bg-darkBg text-gray-800 dark:text-gray-200 font-sans antialiased">
+<div class="es-dash">
+<aside class="es-dash__sidebar" id="dash-sidebar">
+    <div class="flex items-center gap-2 px-5 py-5 border-b border-gray-100 dark:border-gray-800">
+        <a href="index.html" class="es-logo" aria-label="EcoScrap home">
+            <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+            <span class="es-logo__text"><span class="es-logo__name">EcoScrap</span><span class="es-logo__tag">Admin Console</span></span>
+        </a>
+        <button type="button" class="es-iconbtn ms-auto lg:hidden" id="dash-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="px-5 py-3">
+        <span class="es-badge es-badge--green"><i class="fa-solid fa-circle-check"></i> Administrator</span>
+    </div>
+    <nav class="flex-1 px-3 pb-4 space-y-0.5" aria-label="Dashboard sections">
+        <button type="button" class="es-navlink" data-dash-nav="overview"><i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span></button><button type="button" class="es-navlink" data-dash-nav="pickups"><i class="fa-solid fa-truck-ramp-box"></i> <span>Pickup Requests</span></button><button type="button" class="es-navlink" data-dash-nav="customers"><i class="fa-solid fa-users"></i> <span>Customers</span></button><button type="button" class="es-navlink" data-dash-nav="collectors"><i class="fa-solid fa-people-carry-box"></i> <span>Collectors</span></button><button type="button" class="es-navlink" data-dash-nav="ratecard"><i class="fa-solid fa-tags"></i> <span>Rate Card</span></button><button type="button" class="es-navlink" data-dash-nav="verification"><i class="fa-solid fa-scale-balanced"></i> <span>Weight Verification</span></button><button type="button" class="es-navlink" data-dash-nav="payments"><i class="fa-solid fa-receipt"></i> <span>Payment History</span></button><button type="button" class="es-navlink" data-dash-nav="locations"><i class="fa-solid fa-map-location-dot"></i> <span>Locations</span></button><button type="button" class="es-navlink" data-dash-nav="reports"><i class="fa-solid fa-chart-line"></i> <span>Reports & Analytics</span></button>
+    </nav>
+    <div class="px-3 py-4 border-t border-gray-100 dark:border-gray-800 space-y-0.5">
+        
+        <a href="index.html" class="es-navlink"><i class="fa-solid fa-arrow-left rtl-flip"></i> <span>Back to Website</span></a>
+        <button type="button" class="es-navlink text-red-500 dark:text-red-400" data-dash-logout><i class="fa-solid fa-right-from-bracket"></i> <span>Log Out</span></button>
+    </div>
+</aside>
+<div class="es-dash__backdrop" id="dash-backdrop"></div>
+  <div class="es-dash__main flex-1 min-w-0 flex flex-col">
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur border-b border-gray-100 dark:border-gray-800">
+    <div class="flex items-center gap-3 px-4 sm:px-6 py-3.5">
+        <button type="button" class="es-iconbtn lg:hidden flex-none" id="dash-burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="min-w-0 flex-1">
+            <h1 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate" id="dash-title">Dashboard</h1>
+            <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 truncate">Admin console Â· operations, rate card & payouts</p>
+        </div>
+        <div class="ms-auto flex items-center gap-1.5 flex-none">
+            <a href="index.html" class="es-iconbtn hidden sm:inline-flex" title="Visit website" aria-label="Visit website"><i class="fa-solid fa-globe"></i></a>
+            <button type="button" class="es-iconbtn" data-dash-nav="pickups" title="Pickup Requests" aria-label="Pickup Requests">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+            </button>
+            <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle title="Toggle RTL layout" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+            </button>
+            <button type="button" class="es-iconbtn" data-theme-toggle title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
+            </button>
+            <div class="flex items-center gap-2 ps-2 ms-1 border-s border-gray-200 dark:border-gray-700">
+                <span class="w-9 h-9 flex-none rounded-full bg-gradient-to-br from-primary to-primaryDark text-white flex items-center justify-center text-xs font-bold" data-user-initials>GU</span>
+                <div class="hidden md:block leading-tight">
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white" data-user-name>Green User</p>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400" data-user-email>demo@ecoscrap.in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-5">
+
+<!-- Overview -->
+<section class="es-dash__view is-active" data-dash-view="overview">
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="es-stat">
+    <span class="es-stat__icon bg-green/10 text-green"><i class="fa-solid fa-truck-ramp-box"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="a-requests">â€”</p>
+        <p class="es-stat__label">Active requests</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-blue/10 text-blue"><i class="fa-solid fa-users"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="a-customers">â€”</p>
+        <p class="es-stat__label">Customers</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-amber/10 text-amber"><i class="fa-solid fa-weight-hanging"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="a-weight">â€”</p>
+        <p class="es-stat__label">Collected (kg)</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-emerald/10 text-emerald"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="a-revenue">â€”</p>
+        <p class="es-stat__label">Payouts (â‚¹)</p>
+    </div>
+</div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-5 mt-5">
+        <div class="lg:col-span-2 min-w-0"><div class="es-card">
+        <div class="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700">
+            <div><h2 class="font-bold text-gray-900 dark:text-white">Pickups This Week</h2><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Daily collection volume.</p></div>
+            <span class="es-badge es-badge--green">Live</span>
+        </div>
+        <div class="p-5"><div class="es-bar" id="admin-pickup-chart"></div></div>
+    </div></div>
+        <div class="min-w-0"><div class="es-card">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">Category Mix</h2></div>
+        <div class="p-5 space-y-4" id="admin-category-split"></div>
+    </div></div>
+    </div>
+    <div class="mt-5"><div class="es-card"><div class="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">Latest Requests</h2><button type="button" class="es-btn es-btn--ghost es-btn--sm" data-dash-nav="pickups">View all</button></div><div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[720px]">
+    <thead><tr><th>Request</th><th>Customer</th><th>Category</th><th>Status</th></tr></thead>
+    <tbody id="admin-recent-body"><tr><td colspan="4" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div></div></div>
+</section>
+
+<!-- Pickup requests -->
+<section class="es-dash__view" data-dash-view="pickups">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Pickup Requests</h2>
+        <div class="flex items-center gap-2"><button type="button" class="es-btn es-btn--primary es-btn--sm" data-open-modal="pickup"><i class="fa-solid fa-plus"></i> New</button></div>
+    </div>
+    <div class="p-5"><div class="flex flex-col lg:flex-row gap-3 justify-between mb-4">
+            <input type="search" data-table-search="pickups" placeholder="Search request, customer, cityâ€¦" class="es-input lg:max-w-xs">
+            <div class="flex flex-wrap gap-2" data-table-filters="pickups"></div>
+        </div><div class="overflow-x-auto"><table class="es-table min-w-[900px]">
+    <thead><tr><th>Request</th><th>Customer</th><th>Category</th><th>Slot</th><th>Weight</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody id="admin-pickups-body"><tr><td colspan="7" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Customers -->
+<section class="es-dash__view" data-dash-view="customers">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Customers</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="flex flex-col lg:flex-row gap-3 justify-between mb-4">
+            <input type="search" data-table-search="customers" placeholder="Search name, email, cityâ€¦" class="es-input lg:max-w-xs">
+            <div class="flex gap-2"><button type="button" class="es-btn es-btn--ghost es-btn--sm" data-demo-action="Export CSV"><i class="fa-solid fa-download"></i> Export</button></div>
+        </div><div class="overflow-x-auto"><table class="es-table min-w-[820px]">
+    <thead><tr><th>Customer</th><th>City</th><th>Pickups</th><th>Total weight</th><th>Lifetime value</th><th>Status</th></tr></thead>
+    <tbody id="admin-customers-body"><tr><td colspan="6" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Collectors -->
+<section class="es-dash__view" data-dash-view="collectors">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Collector Fleet</h2>
+        <div class="flex items-center gap-2"><button type="button" class="es-btn es-btn--primary es-btn--sm" data-open-modal="collector"><i class="fa-solid fa-plus"></i> Add</button></div>
+    </div>
+    <div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[820px]">
+    <thead><tr><th>Collector</th><th>City</th><th>Vehicle</th><th>Assignments</th><th>Rating</th><th>Status</th><th></th></tr></thead>
+    <tbody id="admin-collectors-body"><tr><td colspan="7" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Rate card -->
+<section class="es-dash__view" data-dash-view="ratecard">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Rate Card Management</h2>
+        <div class="flex items-center gap-2"><button type="button" class="es-btn es-btn--primary es-btn--sm" data-open-modal="rate"><i class="fa-solid fa-plus"></i> Add Rate</button></div>
+    </div>
+    <div class="p-5"><div class="flex flex-col lg:flex-row gap-3 justify-between mb-4">
+            <input type="search" data-table-search="ratecard" placeholder="Search materialâ€¦" class="es-input lg:max-w-xs">
+            <button type="button" class="es-btn es-btn--ghost es-btn--sm" data-reset-rates><i class="fa-solid fa-rotate"></i> Reset to defaults</button>
+        </div><div class="overflow-x-auto"><table class="es-table min-w-[860px]">
+    <thead><tr><th>Material</th><th>Category</th><th>Unit</th><th>Price (â‚¹)</th><th>Updated</th><th>Actions</th></tr></thead>
+    <tbody id="admin-ratecard-body"><tr><td colspan="6" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Weight verification -->
+<section class="es-dash__view" data-dash-view="verification">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Weight Verification Queue</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Confirm field weights against the collector-scale reading before releasing payouts.</p><div class="overflow-x-auto"><table class="es-table min-w-[820px]">
+    <thead><tr><th>Request</th><th>Collector</th><th>Claimed</th><th>Verified</th><th>Variance</th><th>Result</th><th></th></tr></thead>
+    <tbody id="admin-verification-body"><tr><td colspan="7" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Payment history -->
+<section class="es-dash__view" data-dash-view="payments">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Payment History</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[860px]">
+    <thead><tr><th>Txn ID</th><th>Customer</th><th>Method</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead>
+    <tbody id="admin-payments-body"><tr><td colspan="6" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Locations -->
+<section class="es-dash__view" data-dash-view="locations">
+    <div class="es-card">
+        <div class="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="font-bold text-gray-900 dark:text-white">Service Locations</h2>
+            <button type="button" class="es-btn es-btn--primary es-btn--sm" data-open-modal="location"><i class="fa-solid fa-plus"></i> Add Location</button>
+        </div>
+        <div class="p-5 grid sm:grid-cols-2 xl:grid-cols-3 gap-4" id="admin-locations-grid"></div>
+    </div>
+</section>
+
+<!-- Reports -->
+<section class="es-dash__view" data-dash-view="reports">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 es-card">
+            <div class="p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">Revenue Trend</h2><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Monthly payout value (â‚¹ thousands).</p></div>
+            <div class="p-5"><div class="es-bar" id="admin-revenue-chart"></div></div>
+        </div>
+        <div class="es-card"><div class="p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">Key Ratios</h2></div>
+            <div class="p-5 space-y-5" id="admin-ratios"></div>
+        </div>
+    </div>
+    <div class="mt-5 es-card"><div class="p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">City Performance</h2></div>
+        <div class="p-5" id="admin-city-report"></div>
+    </div>
+</section>
+
+    </main>
+    <footer class="px-4 sm:px-6 py-5 text-center text-xs text-gray-400 dark:text-gray-500 border-t border-gray-100 dark:border-gray-800">Â© 2026 EcoScrap Â· Demo dashboard â€” data is stored only in your browser.</footer>
+  </div>
+</div>
+</body>
+</html>

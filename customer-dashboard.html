@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard | EcoScrap</title>
+    <meta name="description" content="Book scrap pickups, track live status, review weight history and manage payouts.">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#16A34A">
+    <script>try{if(localStorage.getItem("ecoscrap-theme")==="dark"||(!localStorage.getItem("ecoscrap-theme")&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}else{document.documentElement.style.colorScheme="light"}if(localStorage.getItem("ecoscrap-dir")==="rtl"){document.documentElement.setAttribute("dir","rtl")}}catch(e){}</script>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        primaryDark: '#14532D',
+        primaryLight: '#86EFAC',
+        lightBg: '#F0FDF4',
+        darkBg: '#0B1220'
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    }
+  }
+};</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/rtl.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/dash-data.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body data-no-backtop class="bg-slate-50 dark:bg-darkBg text-gray-800 dark:text-gray-200 font-sans antialiased">
+<div class="es-dash">
+<aside class="es-dash__sidebar" id="dash-sidebar">
+    <div class="flex items-center gap-2 px-5 py-5 border-b border-gray-100 dark:border-gray-800">
+        <a href="index.html" class="es-logo" aria-label="EcoScrap home">
+            <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+            <span class="es-logo__text"><span class="es-logo__name">EcoScrap</span><span class="es-logo__tag">Customer Portal</span></span>
+        </a>
+        <button type="button" class="es-iconbtn ms-auto lg:hidden" id="dash-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="px-5 py-3">
+        <span class="es-badge es-badge--green"><i class="fa-solid fa-circle-check"></i> Customer account</span>
+    </div>
+    <nav class="flex-1 px-3 pb-4 space-y-0.5" aria-label="Dashboard sections">
+        <button type="button" class="es-navlink" data-dash-nav="overview"><i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span></button><button type="button" class="es-navlink" data-dash-nav="schedule"><i class="fa-solid fa-calendar-plus"></i> <span>Schedule Pickup</span></button><button type="button" class="es-navlink" data-dash-nav="requests"><i class="fa-solid fa-list-check"></i> <span>My Requests</span></button><button type="button" class="es-navlink" data-dash-nav="status"><i class="fa-solid fa-truck-fast"></i> <span>Live Status</span></button><button type="button" class="es-navlink" data-dash-nav="weights"><i class="fa-solid fa-weight-hanging"></i> <span>Weight History</span></button><button type="button" class="es-navlink" data-dash-nav="payouts"><i class="fa-solid fa-indian-rupee-sign"></i> <span>Payout History</span></button><button type="button" class="es-navlink" data-dash-nav="payment"><i class="fa-solid fa-wallet"></i> <span>Payment Preferences</span></button><button type="button" class="es-navlink" data-dash-nav="addresses"><i class="fa-solid fa-location-dot"></i> <span>Saved Addresses</span></button><button type="button" class="es-navlink" data-dash-nav="notifications"><i class="fa-solid fa-bell"></i> <span>Notifications</span></button><button type="button" class="es-navlink" data-dash-nav="profile"><i class="fa-solid fa-user-gear"></i> <span>Profile Settings</span></button>
+    </nav>
+    <div class="px-3 py-4 border-t border-gray-100 dark:border-gray-800 space-y-0.5">
+        
+        <a href="index.html" class="es-navlink"><i class="fa-solid fa-arrow-left rtl-flip"></i> <span>Back to Website</span></a>
+        <button type="button" class="es-navlink text-red-500 dark:text-red-400" data-dash-logout><i class="fa-solid fa-right-from-bracket"></i> <span>Log Out</span></button>
+    </div>
+</aside>
+<div class="es-dash__backdrop" id="dash-backdrop"></div>
+  <div class="es-dash__main flex-1 min-w-0 flex flex-col">
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur border-b border-gray-100 dark:border-gray-800">
+    <div class="flex items-center gap-3 px-4 sm:px-6 py-3.5">
+        <button type="button" class="es-iconbtn lg:hidden flex-none" id="dash-burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <div class="min-w-0 flex-1">
+            <h1 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate" id="dash-title">Dashboard</h1>
+            <p class="hidden sm:block text-xs text-gray-500 dark:text-gray-400 truncate">Customer dashboard Â· bookings, tracking & payouts</p>
+        </div>
+        <div class="ms-auto flex items-center gap-1.5 flex-none">
+            <a href="index.html" class="es-iconbtn hidden sm:inline-flex" title="Visit website" aria-label="Visit website"><i class="fa-solid fa-globe"></i></a>
+            <button type="button" class="es-iconbtn relative" data-dash-nav="notifications" title="Notifications" aria-label="Notifications">
+                <i class="fa-regular fa-bell"></i>
+                <span class="absolute -top-0.5 -end-0.5 h-4 min-w-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center" data-notif-badge>3</span>
+            </button>
+            <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle title="Toggle RTL layout" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+            </button>
+            <button type="button" class="es-iconbtn" data-theme-toggle title="Toggle dark mode" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
+            </button>
+            <div class="flex items-center gap-2 ps-2 ms-1 border-s border-gray-200 dark:border-gray-700">
+                <span class="w-9 h-9 flex-none rounded-full bg-gradient-to-br from-primary to-primaryDark text-white flex items-center justify-center text-xs font-bold" data-user-initials>GU</span>
+                <div class="hidden md:block leading-tight">
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white" data-user-name>Green User</p>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400" data-user-email>demo@ecoscrap.in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-5">
+
+<!-- Overview -->
+<section class="es-dash__view is-active" data-dash-view="overview">
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="es-stat">
+    <span class="es-stat__icon bg-green/10 text-green"><i class="fa-solid fa-box-open"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="pickups">â€”</p>
+        <p class="es-stat__label">Total pickups</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-blue/10 text-blue"><i class="fa-solid fa-weight-hanging"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="weight">â€”</p>
+        <p class="es-stat__label">Total weight (kg)</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-amber/10 text-amber"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="earnings">â€”</p>
+        <p class="es-stat__label">Total earnings</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-emerald/10 text-emerald"><i class="fa-solid fa-leaf"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="co2">â€”</p>
+        <p class="es-stat__label">COâ‚‚ saved (kg)</p>
+    </div>
+</div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-5 mt-5">
+        <div class="lg:col-span-2 min-w-0">
+            <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Recent Pickups</h2>
+        <div class="flex items-center gap-2"><button type="button" class="es-btn es-btn--ghost es-btn--sm" data-dash-nav="requests">View all</button></div>
+    </div>
+    <div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[720px]">
+    <thead><tr><th>Request</th><th>Material</th><th>Weight</th><th>Payout</th><th>Status</th></tr></thead>
+    <tbody id="cust-recent-body"><tr><td colspan="5" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+        </div>
+        <div class="space-y-5 min-w-0">
+            <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Quick Actions</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="grid grid-cols-2 gap-3">
+        <button type="button" class="es-panel es-panel--hover flex flex-col items-center gap-2 py-5" data-dash-nav="schedule"><i class="fa-solid fa-calendar-plus text-2xl text-primary"></i><span class="text-sm font-semibold">Book Pickup</span></button>
+        <button type="button" class="es-panel es-panel--hover flex flex-col items-center gap-2 py-5" data-dash-nav="status"><i class="fa-solid fa-truck-fast text-2xl text-primary"></i><span class="text-sm font-semibold">Track Live</span></button>
+        <button type="button" class="es-panel es-panel--hover flex flex-col items-center gap-2 py-5" data-dash-nav="payouts"><i class="fa-solid fa-indian-rupee-sign text-2xl text-primary"></i><span class="text-sm font-semibold">Payouts</span></button>
+        <a href="rate-card.html" class="es-panel es-panel--hover flex flex-col items-center gap-2 py-5"><i class="fa-solid fa-tags text-2xl text-primary"></i><span class="text-sm font-semibold">Rate Card</span></a>
+        </div></div>
+</div>
+            <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Your Green Impact</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><p class="text-sm text-gray-500 dark:text-gray-400">You have kept <strong class="text-primary" data-stat="weight">0</strong> kg of material in circulation.</p>
+        <div class="es-progress mt-4"><span class="es-progress__fill block" style="width:68%"></span></div>
+        <p class="text-xs text-gray-400 mt-2">68% toward your next Green Ambassador badge.</p></div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- Schedule pickup -->
+<section class="es-dash__view" data-dash-view="schedule">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 min-w-0">
+            <div class="es-card">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="font-bold text-gray-900 dark:text-white">Schedule a New Pickup</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Fill in the details and we'll confirm a collector for your slot.</p>
+        </div>
+        <form id="schedule-form" data-validate class="p-5 space-y-5">
+            <div data-form-alert class="es-alert es-alert--error"></div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="es-field"><label class="es-label" for="sc-cat">Primary category</label>
+                    <select id="sc-cat" name="category" class="es-select">
+                        <option>Paper &amp; Cardboard</option><option>Metal &amp; Aluminum</option><option>Plastic &amp; Packaging</option>
+                        <option>E-Waste</option><option>Old Appliances</option><option>Batteries &amp; Recyclables</option><option>Mixed Scrap</option>
+                    </select>
+                </div>
+                <div class="es-field"><label class="es-label" for="sc-weight">Estimated weight (kg)</label>
+                    <input id="sc-weight" name="weight" type="number" min="0.5" step="0.5" value="10" class="es-input" data-label="Estimated weight" required>
+                    <span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4">
+                <div class="es-field"><label class="es-label" for="sc-date">Date</label>
+                    <input id="sc-date" name="date" type="date" class="es-input" data-label="Pickup date" required>
+                    <span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span>
+                </div>
+                <div class="es-field"><label class="es-label" for="sc-slot">Time slot</label>
+                    <select id="sc-slot" name="slot" class="es-select"><option>Morning (7â€“11 AM)</option><option>Afternoon (12â€“4 PM)</option><option>Evening (5â€“8 PM)</option></select>
+                </div>
+                <div class="es-field"><label class="es-label" for="sc-city">City</label>
+                    <select id="sc-city" name="city" class="es-select"><option>Delhi NCR</option><option>Mumbai</option><option>Bangalore</option><option>Pune</option><option>Hyderabad</option><option>Chennai</option></select>
+                </div>
+            </div>
+            <div class="es-field"><label class="es-label" for="sc-address">Pickup address</label>
+                <textarea id="sc-address" name="address" class="es-textarea !min-h-[5rem]" data-label="Pickup address" data-minlen="8" placeholder="Flat / house, street, landmark, PIN" required></textarea>
+                <span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span>
+            </div>
+            <div class="es-field"><label class="es-label" for="sc-notes">Notes for the collector <span class="text-gray-400 font-normal">(optional)</span></label>
+                <input id="sc-notes" name="notes" type="text" class="es-input" placeholder="e.g. Ring the bell twice, ground floor"></div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="submit" class="es-btn es-btn--primary es-btn--lg"><i class="fa-solid fa-calendar-check"></i> Confirm Pickup</button>
+                <button type="reset" class="es-btn es-btn--ghost es-btn--lg">Reset</button>
+            </div>
+        </form>
+    </div>
+        </div>
+        <div class="space-y-5 min-w-0">
+            <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Estimated Value</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><p class="text-sm text-gray-500 dark:text-gray-400">Based on today's rates, a <strong>10 kg</strong> mixed load is worth roughly:</p>
+        <p class="text-3xl font-extrabold text-primary mt-2" id="est-value">â‚¹180</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+            <li class="flex justify-between"><span>Paper</span><span>â‚¹14/kg</span></li>
+            <li class="flex justify-between"><span>Metal</span><span>â‚¹28/kg+</span></li>
+            <li class="flex justify-between"><span>E-Waste</span><span>â‚¹45/kg</span></li>
+            <li class="flex justify-between"><span>Batteries</span><span>â‚¹180/kg</span></li>
+        </ul>
+        <a href="rate-card.html" class="es-btn es-btn--ghost es-btn--sm es-btn--block mt-4">Full Rate Card</a></div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- My requests -->
+<section class="es-dash__view" data-dash-view="requests">
+    <div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">My Pickup Requests</h2>
+        <div class="flex items-center gap-2"><button type="button" class="es-btn es-btn--primary es-btn--sm" data-dash-nav="schedule"><i class="fa-solid fa-plus"></i> New</button></div>
+    </div>
+    <div class="p-5"><div class="flex flex-wrap gap-2 mb-4" id="cust-req-filters"></div><div class="overflow-x-auto"><table class="es-table min-w-[720px]">
+    <thead><tr><th>Request</th><th>Category</th><th>Date</th><th>Weight</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+    <tbody id="cust-requests-body"><tr><td colspan="7" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div>
+</section>
+
+<!-- Live status -->
+<section class="es-dash__view" data-dash-view="status">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 min-w-0"><div class="es-card">
+        <div class="flex flex-wrap items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+            <div>
+                <h2 class="font-bold text-gray-900 dark:text-white">Live Pickup Tracker</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" id="tracker-req">Request #REQ-1042</p>
+            </div>
+            <span class="es-badge es-badge--amber" data-tracker-badge><i class="fa-solid fa-truck-fast"></i> En route</span>
+        </div>
+        <div class="p-5">
+            <div class="es-stepper pt-2">
+                <div class="es-stepper__track">
+                    <div class="es-stepper__step is-done"><span class="es-stepper__dot"><i class="fa-solid fa-check"></i></span><span class="es-stepper__label">Booked</span></div>
+                    <div class="es-stepper__step is-done"><span class="es-stepper__dot"><i class="fa-solid fa-check"></i></span><span class="es-stepper__label">Dispatched</span></div>
+                    <div class="es-stepper__step is-current"><span class="es-stepper__dot">3</span><span class="es-stepper__label">En route</span></div>
+                    <div class="es-stepper__step"><span class="es-stepper__dot">4</span><span class="es-stepper__label">Verify</span></div>
+                    <div class="es-stepper__step"><span class="es-stepper__dot">5</span><span class="es-stepper__label">Paid</span></div>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-4 mt-8">
+                <div class="es-panel text-center"><p class="text-xs text-gray-500 dark:text-gray-400">Collector</p><p class="font-bold text-gray-900 dark:text-white mt-1">David M.</p></div>
+                <div class="es-panel text-center"><p class="text-xs text-gray-500 dark:text-gray-400">Vehicle</p><p class="font-bold text-gray-900 dark:text-white mt-1">DL-8C-2201</p></div>
+                <div class="es-panel text-center"><p class="text-xs text-gray-500 dark:text-gray-400">ETA</p><p class="font-bold text-green-600 dark:text-primaryLight mt-1">â‰ˆ 18 min</p></div>
+            </div>
+            <div class="es-progress mt-6"><span class="es-progress__fill block" style="width:64%"></span></div>
+            <p class="text-xs text-gray-400 mt-2">64% of the journey complete</p>
+        </div>
+    </div></div>
+        <div class="space-y-5 min-w-0"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Notification Timeline</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><ol class="space-y-4 text-sm">
+        <li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span><div><p class="font-semibold text-gray-900 dark:text-white">Collector dispatched</p><p class="text-xs text-gray-500 dark:text-gray-400">2:10 PM</p></div></li>
+        <li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span><div><p class="font-semibold text-gray-900 dark:text-white">Pickup confirmed</p><p class="text-xs text-gray-500 dark:text-gray-400">1:45 PM</p></div></li>
+        <li class="flex gap-3"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 mt-1.5"></span><div><p class="font-semibold text-gray-500 dark:text-gray-400">Awaiting weighing</p><p class="text-xs text-gray-400">Pending</p></div></li>
+        </ol></div>
+</div></div>
+    </div>
+</section>
+
+<!-- Weight history -->
+<section class="es-dash__view" data-dash-view="weights">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 min-w-0"><div class="es-card">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="font-bold text-gray-900 dark:text-white">Monthly Collected Weight</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Kilograms diverted from landfill each month.</p>
+        </div>
+        <div class="p-5"><div class="es-bar" id="cust-weight-chart"></div></div>
+    </div></div>
+        <div class="min-w-0"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Category Split</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="space-y-4" id="cust-category-split"></div></div>
+</div></div>
+    </div>
+    <div class="mt-5"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Weight Ledger</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[720px]">
+    <thead><tr><th>Date</th><th>Category</th><th>Verified weight</th><th>Rate</th><th>Value</th></tr></thead>
+    <tbody id="cust-weights-body"><tr><td colspan="5" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div></div>
+</section>
+
+<!-- Payout history -->
+<section class="es-dash__view" data-dash-view="payouts">
+    <div class="grid sm:grid-cols-3 gap-4">
+        <div class="es-stat">
+    <span class="es-stat__icon bg-green/10 text-green"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="pay-total">â€”</p>
+        <p class="es-stat__label">Total earned</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-amber/10 text-amber"><i class="fa-solid fa-hourglass-half"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="pay-pending">â€”</p>
+        <p class="es-stat__label">Pending</p>
+    </div>
+</div><div class="es-stat">
+    <span class="es-stat__icon bg-blue/10 text-blue"><i class="fa-solid fa-chart-simple"></i></span>
+    <div>
+        <p class="es-stat__value" data-stat="pay-avg">â€”</p>
+        <p class="es-stat__label">Avg/pickup</p>
+    </div>
+</div>
+    </div>
+    <div class="mt-5"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Payout History</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="overflow-x-auto"><table class="es-table min-w-[720px]">
+    <thead><tr><th>Date</th><th>Request</th><th>Method</th><th>Weight</th><th>Amount</th><th>Status</th></tr></thead>
+    <tbody id="cust-payouts-body"><tr><td colspan="6" class="es-empty">Loadingâ€¦</td></tr></tbody>
+</table></div></div>
+</div></div>
+</section>
+
+<!-- Payment preferences -->
+<section class="es-dash__view" data-dash-view="payment">
+    <div class="grid lg:grid-cols-2 gap-5">
+        <div class="min-w-0"><div class="es-card">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="font-bold text-gray-900 dark:text-white">Payment Preferences</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Choose how you'd like to receive your payouts.</p>
+        </div>
+        <form id="payment-form" data-validate class="p-5 space-y-5">
+            <div data-form-alert class="es-alert es-alert--error"></div>
+            <div class="space-y-3">
+                <label class="flex items-start gap-3 es-panel cursor-pointer"><input type="radio" name="method" value="UPI" checked class="mt-1 text-primary focus:ring-primary"><span><strong class="block text-gray-900 dark:text-white">UPI (recommended)</strong><span class="text-sm text-gray-500 dark:text-gray-400">Instant settlement to your UPI ID.</span></span></label>
+                <label class="flex items-start gap-3 es-panel cursor-pointer"><input type="radio" name="method" value="Bank" class="mt-1 text-primary focus:ring-primary"><span><strong class="block text-gray-900 dark:text-white">Bank transfer</strong><span class="text-sm text-gray-500 dark:text-gray-400">Settles the same working day.</span></span></label>
+                <label class="flex items-start gap-3 es-panel cursor-pointer"><input type="radio" name="method" value="Cash" class="mt-1 text-primary focus:ring-primary"><span><strong class="block text-gray-900 dark:text-white">Cash on pickup</strong><span class="text-sm text-gray-500 dark:text-gray-400">Handed over by the collector.</span></span></label>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="es-field"><label class="es-label" for="pay-upi">UPI ID</label><input id="pay-upi" name="upi" type="text" class="es-input" placeholder="name@bank" value="greenuser@upi"></div>
+                <div class="es-field"><label class="es-label" for="pay-phone">Linked phone</label><input id="pay-phone" name="phone" type="tel" class="es-input" data-label="Phone number" value="+91 98100 11223"><span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span></div>
+            </div>
+            <button type="submit" class="es-btn es-btn--primary es-btn--lg"><i class="fa-solid fa-floppy-disk"></i> Save Preferences</button>
+        </form>
+    </div></div>
+        <div class="space-y-5 min-w-0"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Payout SLAs</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+        <li class="flex items-center gap-3"><i class="fa-solid fa-bolt text-primary"></i> UPI credited within 30 minutes</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-building-columns text-primary"></i> Bank transfers same working day</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-shield-halved text-primary"></i> No deductions, ever</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-receipt text-primary"></i> Digital receipt for every pickup</li>
+        </ul></div>
+</div><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Need an Invoice?</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><p class="text-sm text-gray-500 dark:text-gray-400">Download consolidated statements for tax or society records.</p>
+        <button type="button" class="es-btn es-btn--ghost es-btn--sm es-btn--block mt-4" data-demo-action="Statement download">Download Statement</button></div>
+</div></div>
+    </div>
+</section>
+
+<!-- Notifications -->
+<section class="es-dash__view" data-dash-view="notifications">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 min-w-0"><div class="es-card">
+        <div class="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 class="font-bold text-gray-900 dark:text-white">Recent Notifications</h2>
+            <button type="button" class="es-btn es-btn--ghost es-btn--sm" data-clear-notifs>Mark all read</button>
+        </div>
+        <div class="divide-y divide-gray-100 dark:divide-gray-700" id="cust-notif-list"></div>
+    </div></div>
+        <div class="min-w-0"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Notification Preferences</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="space-y-4">
+        <label class="flex items-center justify-between gap-3"><span class="text-sm font-medium text-gray-700 dark:text-gray-200">Pickup status updates</span><span class="es-switch"><input type="checkbox" checked><span class="es-switch__track"></span></span></label>
+        <label class="flex items-center justify-between gap-3"><span class="text-sm font-medium text-gray-700 dark:text-gray-200">Payout confirmations</span><span class="es-switch"><input type="checkbox" checked><span class="es-switch__track"></span></span></label>
+        <label class="flex items-center justify-between gap-3"><span class="text-sm font-medium text-gray-700 dark:text-gray-200">Rate-change alerts</span><span class="es-switch"><input type="checkbox"><span class="es-switch__track"></span></span></label>
+        <label class="flex items-center justify-between gap-3"><span class="text-sm font-medium text-gray-700 dark:text-gray-200">Marketing &amp; tips</span><span class="es-switch"><input type="checkbox"><span class="es-switch__track"></span></span></label>
+        </div></div>
+</div></div>
+    </div>
+</section>
+
+<!-- Profile -->
+<section class="es-dash__view" data-dash-view="profile">
+    <div class="grid lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 min-w-0"><div class="es-card">
+        <div class="p-5 border-b border-gray-100 dark:border-gray-700"><h2 class="font-bold text-gray-900 dark:text-white">Profile Settings</h2><p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Keep your details up to date for smooth pickups.</p></div>
+        <form id="profile-form" data-validate class="p-5 space-y-5">
+            <div data-form-alert class="es-alert es-alert--error"></div>
+            <div class="flex items-center gap-4">
+                <span class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primaryDark text-white flex items-center justify-center text-xl font-bold" data-user-initials-lg>GU</span>
+                <div><p class="font-semibold text-gray-900 dark:text-white" data-user-name-lg>Green User</p><p class="text-sm text-gray-500 dark:text-gray-400">Member since 2026</p></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="es-field"><label class="es-label" for="pf-name">Full name</label><input id="pf-name" name="name" type="text" class="es-input" data-label="Full name" required><span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span></div>
+                <div class="es-field"><label class="es-label" for="pf-phone">Phone</label><input id="pf-phone" name="phone" type="tel" class="es-input" data-label="Phone number" required><span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span></div>
+            </div>
+            <div class="es-field"><label class="es-label" for="pf-email">Email</label><input id="pf-email" name="email" type="email" class="es-input" data-label="Email address" required><span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span></div>
+            <div class="es-field"><label class="es-label" for="pf-city">Preferred city</label>
+                <select id="pf-city" name="city" class="es-select"><option>Delhi NCR</option><option>Mumbai</option><option>Bangalore</option><option>Pune</option><option>Hyderabad</option><option>Chennai</option></select>
+            </div>
+            <button type="submit" class="es-btn es-btn--primary es-btn--lg"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        </form>
+    </div></div>
+        <div class="space-y-5 min-w-0"><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Security</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><div class="space-y-3">
+        <div class="es-field"><label class="es-label" for="pf-old">Current password</label><input id="pf-old" type="password" class="es-input" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"></div>
+        <div class="es-field"><label class="es-label" for="pf-new">New password</label><input id="pf-new" type="password" class="es-input" placeholder="6+ characters"></div>
+        <button type="button" class="es-btn es-btn--ghost es-btn--sm es-btn--block" data-demo-action="Password change">Update Password</button>
+        </div></div>
+</div><div class="es-card">
+    <div class="flex items-center justify-between gap-3 p-5 border-b border-gray-100 dark:border-gray-700">
+        <h2 class="font-bold text-gray-900 dark:text-white">Danger Zone</h2>
+        <div class="flex items-center gap-2"></div>
+    </div>
+    <div class="p-5"><p class="text-sm text-gray-500 dark:text-gray-400">Deactivating hides your account and cancels reminders. This demo can be reversed by refreshing.</p>
+        <button type="button" class="es-btn es-btn--sm es-btn--block mt-4 !bg-red-50 !text-red-600 hover:!bg-red-100 dark:!bg-red-500/10 dark:!text-red-400" data-demo-action="Account deactivation">Deactivate Account</button></div>
+</div></div>
+    </div>
+</section>
+
+    </main>
+    <footer class="px-4 sm:px-6 py-5 text-center text-xs text-gray-400 dark:text-gray-500 border-t border-gray-100 dark:border-gray-800">Â© 2026 EcoScrap Â· Demo dashboard â€” data is stored only in your browser.</footer>
+  </div>
+</div>
+</body>
+</html>

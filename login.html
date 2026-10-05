@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EcoScrap</title>
+    <meta name="description" content="Log in to your EcoScrap account to schedule scrap pickups, track requests and manage payouts.">
+    <meta name="theme-color" content="#16A34A">
+    <script>try{if(localStorage.getItem("ecoscrap-theme")==="dark"||(!localStorage.getItem("ecoscrap-theme")&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}else{document.documentElement.style.colorScheme="light"}if(localStorage.getItem("ecoscrap-dir")==="rtl"){document.documentElement.setAttribute("dir","rtl")}}catch(e){}</script>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        primaryDark: '#14532D',
+        primaryLight: '#86EFAC',
+        lightBg: '#F0FDF4',
+        darkBg: '#0B1220'
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    }
+  }
+};</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/rtl.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</head>
+<body data-no-backtop class="bg-white dark:bg-darkBg text-gray-800 dark:text-gray-200 font-sans min-h-screen antialiased">
+<div class="flex min-h-screen">
+  <div class="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 lg:px-16 py-8">
+    <div class="flex items-center justify-between">
+    <a href="index.html" class="es-logo" aria-label="EcoScrap home">
+        <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+        <span class="es-logo__text">
+            <span class="es-logo__name">EcoScrap</span>
+            <span class="es-logo__tag">Scrap · To · Cash</span>
+        </span>
+    </a>
+    <div class="flex items-center gap-1">
+        <button type="button" class="es-iconbtn" data-rtl-toggle aria-label="Toggle RTL layout" title="Toggle RTL layout"><i class="fa-solid fa-language"></i></button>
+        <button type="button" class="es-iconbtn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i></button>
+    </div>
+</div>
+    <div class="flex-1 flex items-center justify-center py-10">
+      <div class="w-full max-w-md">
+<div>
+    <span class="es-eyebrow">Welcome Back</span>
+    <h1 class="mt-4 text-3xl font-extrabold text-gray-900 dark:text-white">Log in to EcoScrap</h1>
+    <p class="mt-3 text-gray-500 dark:text-gray-400">Track pickups, view payouts and schedule your next doorstep collection.</p>
+</div>
+
+<form id="login-form" data-validate class="mt-8 space-y-5">
+    <input type="hidden" id="login-role" name="role" value="customer">
+    <div data-form-alert class="es-alert es-alert--error"></div>
+
+    <div class="es-field">
+        <label class="es-label" for="l-email">Email or phone</label>
+        <input id="l-email" name="email" type="text" class="es-input" data-label="Email or phone" autocomplete="username" placeholder="you@example.com" required>
+        <span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span>
+    </div>
+
+    <div class="es-field">
+        <label class="es-label" for="l-password">Password</label>
+        <div class="relative">
+            <input id="l-password" name="password" type="password" class="es-input !pe-11" data-label="Password" autocomplete="current-password" placeholder="••••••••" required>
+            <button type="button" class="absolute inset-y-0 end-3 flex items-center text-gray-400 hover:text-primary" data-pw-toggle="l-password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <span class="es-error"><i class="fa-solid fa-circle-exclamation"></i></span>
+    </div>
+
+    <div class="flex items-center justify-between">
+        <label class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"><input type="checkbox" name="remember" class="rounded border-gray-300 text-primary focus:ring-primary"> Remember me</label>
+        <a href="forgot-password.html" class="text-sm font-semibold text-primary hover:underline">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="es-btn es-btn--primary es-btn--lg es-btn--block">Log In <i class="fa-solid fa-right-to-bracket"></i></button>
+</form>
+
+<div class="my-7 flex items-center before:flex-1 before:border-t before:border-gray-200 dark:before:border-gray-700 after:flex-1 after:border-t after:border-gray-200 dark:after:border-gray-700">
+    <span class="px-4 text-xs uppercase tracking-wide text-gray-400">or continue with</span>
+</div>
+<div class="grid grid-cols-3 gap-3">
+    <button type="button" data-social="Google" class="es-btn es-btn--ghost"><i class="fa-brands fa-google text-red-500"></i> Google</button>
+    <button type="button" data-social="Facebook" class="es-btn es-btn--ghost"><i class="fa-brands fa-facebook-f text-blue-600"></i> Facebook</button>
+    <button type="button" data-social="Apple" class="es-btn es-btn--ghost"><i class="fa-brands fa-apple"></i> Apple</button>
+</div>
+
+
+<p class="mt-7 text-center text-sm text-gray-600 dark:text-gray-400">New to EcoScrap? <a href="signup.html" class="font-bold text-primary hover:underline">Create an account</a></p>
+
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-400 dark:text-gray-500">© 2026 EcoScrap · Demo interface. No real account is created.</p>
+  </div>
+<div class="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+    <div class="hero__media absolute inset-0" style="background-image:url('assets/images/hero-recycle.jpg')" role="img" aria-label="Join the Green Revolution."></div>
+    <div class="absolute inset-0 bg-primaryDark/90"></div>
+    <div class="relative z-10 flex flex-col justify-center px-16 py-14 text-white w-full">
+        <span class="es-eyebrow !bg-white/15 !text-primaryLight">EcoScrap · Scrap to Cash</span>
+        <h2 class="mt-6 text-4xl xl:text-5xl font-extrabold leading-tight text-white">Join the Green Revolution.</h2>
+        <p class="mt-5 text-lg text-gray-200 max-w-md">Recycle your waste, earn rewards and help build a sustainable future for your city.</p>
+        <ul class="mt-9 space-y-4 max-w-md"><li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/15 text-primaryLight"><i class="fa-solid fa-truck-fast"></i></span><span class="text-sm text-gray-200">Doorstep pickup in as little as 40 minutes</span></li><li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/15 text-primaryLight"><i class="fa-solid fa-scale-balanced"></i></span><span class="text-sm text-gray-200">Transparent, calibrated weighing every time</span></li><li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/15 text-primaryLight"><i class="fa-solid fa-indian-rupee-sign"></i></span><span class="text-sm text-gray-200">Instant UPI, bank or cash payouts</span></li><li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/15 text-primaryLight"><i class="fa-solid fa-leaf"></i></span><span class="text-sm text-gray-200">Certified recycling and a lower carbon footprint</span></li></ul>
+        <div class="mt-10 flex items-center gap-4 rounded-2xl bg-white/10 border border-white/15 px-5 py-4 max-w-xs">
+            <span class="text-3xl font-extrabold text-primaryLight">42K+</span>
+            <span class="text-sm text-gray-200">pickups completed</span>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

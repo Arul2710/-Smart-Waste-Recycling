@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EcoScrap | Mission, Team & Responsible Recycling</title>
+    <meta name="description" content="EcoScrap's story — a doorstep scrap pickup network built on transparent weighing, fair rates and certified recycling across six Indian metros.">
+    <meta property="og:title" content="About EcoScrap | Mission, Team & Responsible Recycling">
+    <meta property="og:description" content="EcoScrap's story — a doorstep scrap pickup network built on transparent weighing, fair rates and certified recycling across six Indian metros.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#16A34A">
+    <script>try{if(localStorage.getItem("ecoscrap-theme")==="dark"||(!localStorage.getItem("ecoscrap-theme")&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark"}else{document.documentElement.style.colorScheme="light"}if(localStorage.getItem("ecoscrap-dir")==="rtl"){document.documentElement.setAttribute("dir","rtl")}}catch(e){}</script>
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#16A34A',
+        primaryDark: '#14532D',
+        primaryLight: '#86EFAC',
+        lightBg: '#F0FDF4',
+        darkBg: '#0B1220'
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    }
+  }
+};</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/rtl.js" defer></script>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</head>
+<body class="bg-lightBg dark:bg-darkBg text-gray-800 dark:text-gray-200 font-sans flex flex-col min-h-screen antialiased">
+<header class="es-nav">
+    <div class="container-es">
+        <div class="es-nav__inner">
+            <a href="index.html" class="es-logo" aria-label="EcoScrap home">
+                <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+                <span class="es-logo__text">
+                    <span class="es-logo__name">EcoScrap</span>
+                    <span class="es-logo__tag">Scrap · To · Cash</span>
+                </span>
+            </a>
+
+            <nav class="es-nav__links" aria-label="Primary navigation">
+                <div class="es-drop" data-dropdown>
+                    <button type="button" class="es-nav__link" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        Home <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu" role="menu">
+                        <a class="es-drop__item" href="index.html" role="menuitem"><i class="fa-solid fa-house"></i> Home 1 <span class="ms-auto text-xs text-gray-400 dark:text-gray-500">Classic</span></a>
+                        <a class="es-drop__item" href="home2.html" role="menuitem"><i class="fa-solid fa-sprout"></i> Home 2 <span class="ms-auto text-xs text-gray-400 dark:text-gray-500">Fresh</span></a>
+                    </div>
+                </div>
+                <a href="about.html" class="es-nav__link is-active">About</a><a href="services.html" class="es-nav__link">Services</a><a href="rate-card.html" class="es-nav__link">Rate Card</a><a href="how-it-works.html" class="es-nav__link">How It Works</a><a href="blog.html" class="es-nav__link">Blog</a><a href="contact.html" class="es-nav__link">Contact</a>
+                <div class="es-drop" data-dropdown>
+                    <button type="button" class="es-nav__link" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-gauge-high"></i> Dashboard <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu" role="menu">
+                        <a class="es-drop__item" href="customer-dashboard.html" role="menuitem"><i class="fa-solid fa-user"></i> User</a>
+                        <a class="es-drop__item" href="admin-dashboard.html" role="menuitem"><i class="fa-solid fa-user-shield"></i> Admin</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="es-nav__actions">
+                <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle aria-label="Toggle RTL layout" title="Toggle RTL layout">
+                    <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+                </button>
+                <button type="button" class="es-iconbtn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                </button>
+
+                <!-- Guest actions: shown only when no EcoScrap session exists -->
+    <div class="flex items-center gap-1.5" data-auth-guest>
+    <a href="login.html" class="es-nav__link" title="Login">Login</a>
+    <a href="signup.html" class="es-btn es-btn--primary es-btn--sm">Sign Up</a>
+    </div>
+
+
+                <!-- Account dropdown: shown only when logged in -->
+                <div class="es-drop" data-dropdown data-auth-user hidden>
+                    <button type="button" class="es-nav__link es-nav__link--btn" data-dropdown-trigger aria-haspopup="true" aria-expanded="false">
+                        <span class="es-avatar" data-user-initials>GU</span>
+                        <span class="hidden xl:inline max-w-[8rem] truncate" data-user-name>Account</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="es-drop__menu es-drop__menu--end" role="menu">
+                        <div class="px-3 py-2.5 border-b border-gray-100 dark:border-gray-700">
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate" data-user-name>Account</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500 truncate" data-user-email>you@example.com</p>
+                        </div>
+                        <a class="es-drop__item" href="customer-dashboard.html" role="menuitem"><i class="fa-solid fa-gauge-high"></i> My Dashboard</a>
+                        <a class="es-drop__item" href="admin-dashboard.html" role="menuitem"><i class="fa-solid fa-user-shield"></i> Admin Console</a>
+                        <a class="es-drop__item" href="rate-card.html" role="menuitem"><i class="fa-solid fa-tags"></i> Today's Rates</a>
+                        <div class="es-drop__sep"></div>
+                        <button type="button" class="es-drop__item !text-red-500 dark:!text-red-400" data-auth-logout role="menuitem"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="es-burger" class="es-burger es-iconbtn" aria-label="Open main menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="es-mobile-nav" class="es-mobile bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+        <div class="container-es py-5 space-y-1">
+            <p class="es-mobile__label px-3 pb-1">Home</p>
+            <div class="ps-1">
+                <button type="button" class="es-mobile__link" data-mobile-sub="mobile-home" aria-expanded="false">
+                    <i class="fa-solid fa-house"></i> Home <i class="fa-solid fa-chevron-down ms-auto text-xs"></i>
+                </button>
+                <div id="mobile-home" class="es-mobile__sub">
+                    <a href="index.html" class="es-mobile__link"><i class="fa-solid fa-angles-right"></i> Home 1 — Classic</a>
+                    <a href="home2.html" class="es-mobile__link"><i class="fa-solid fa-angles-right"></i> Home 2 — Fresh</a>
+                </div>
+            </div>
+            <p class="es-mobile__label px-3 pt-3 pb-1">Menu</p>
+            <a href="about.html" class="es-mobile__link is-active"><i class="fa-solid fa-circle-info"></i> About</a><a href="services.html" class="es-mobile__link"><i class="fa-solid fa-truck-pickup"></i> Services</a><a href="rate-card.html" class="es-mobile__link"><i class="fa-solid fa-tags"></i> Rate Card</a><a href="how-it-works.html" class="es-mobile__link"><i class="fa-solid fa-list-check"></i> How It Works</a><a href="blog.html" class="es-mobile__link"><i class="fa-solid fa-newspaper"></i> Blog</a><a href="contact.html" class="es-mobile__link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <button type="button" class="es-mobile__link" data-mobile-sub="mobile-dashboard" aria-haspopup="true" aria-controls="mobile-dashboard" aria-expanded="false">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard <i class="fa-solid fa-chevron-down ms-auto text-xs"></i>
+            </button>
+            <div id="mobile-dashboard" class="es-mobile__sub">
+                <a href="customer-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user"></i> User</a>
+                <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin</a>
+            </div>
+            <div class="flex items-center gap-2 pt-4">
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><i class="fa-solid fa-language"></i> <span data-rtl-label>RTL</span></button>
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke"></i> <span data-theme-label>Dark Mode</span></button>
+            </div>
+            <div class="flex gap-2 pt-4" data-auth-guest>
+                <a href="login.html" class="es-btn es-btn--ghost es-btn--block">Login</a>
+                <a href="signup.html" class="es-btn es-btn--primary es-btn--block">Sign Up</a>
+            </div>
+            <div class="pt-2 space-y-1" data-auth-user hidden>
+                <p class="es-mobile__label px-3 pt-2">Account</p>
+                <a href="customer-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-gauge-high"></i> My Dashboard</a>
+                <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin Console</a>
+                <button type="button" class="es-mobile__link !text-red-500 dark:!text-red-400" data-auth-logout><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="flex-grow">
+
+<!-- 1 · Hero -->
+
+<section data-section="1" class="hero text-center">
+    <div class="hero__media" style="background-image:url('assets/images/scrapyard.jpg')" role="img" aria-label="Scrap collection operations at an EcoScrap facility"></div>
+    <div class="hero__overlay hero__overlay--dark"></div>
+    <div class="container-es relative z-10 py-20 lg:py-24 text-center">
+        <span class="es-eyebrow es-reveal">Who We Are</span>
+        <h1 class="mt-5 text-4xl md:text-5xl font-extrabold text-white leading-tight es-reveal" data-reveal-delay="80">About EcoScrap</h1>
+        <p class="mx-auto mt-5 text-lg text-gray-200/95 max-w-2xl es-reveal" data-reveal-delay="160">From a neighbourhood doorstep service to a metro-wide recycling network — built on transparent weighing, fair rates and responsible disposal.</p>
+        <ol class="flex items-center justify-center gap-2 text-sm text-gray-300 mt-5 es-reveal" data-reveal-delay="240"><li class="text-gray-400"><a href="index.html" class="hover:text-white">Home</a></li><li class="text-gray-500">/</li><li class="text-primaryLight font-semibold">About</li></ol>
+    </div>
+</section>
+
+<!-- 2 · Our Story -->
+<section data-section="2" class="section bg-white dark:bg-gray-900">
+    <div class="container-es grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="es-eyebrow es-reveal">Our Story</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">Founded on a Simple Frustration</h2>
+            <p class="es-subtitle text-lg mt-5 es-reveal" data-reveal-delay="120">In 2024 we started EcoScrap after watching neighbours haul heavy scrap bags to the nearest dealer — where weights were guessed, rates were opaque and payment was later than promised. We built the service we wished existed: a booked slot, a calibrated scale and cash on the spot.</p>
+            <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="180">Today our fleet of collection vehicles serves six metros, and every item we pick up is sorted and routed to certified recyclers with a recorded handover chain.</p>
+            <div class="mt-8 grid grid-cols-3 gap-4 es-reveal" data-reveal-delay="240">
+                <div><p class="text-3xl font-extrabold text-primary"><span data-count-to="42" data-count-suffix="K+">42K+</span></p><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Pickups completed</p></div>
+                <div><p class="text-3xl font-extrabold text-primary"><span data-count-to="6">6</span></p><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Cities served</p></div>
+                <div><p class="text-3xl font-extrabold text-primary"><span data-count-to="98" data-count-suffix="%">98%</span></p><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">On-time arrivals</p></div>
+            </div>
+        </div>
+        <div class="relative es-reveal" data-reveal-delay="120">
+            <div class="es-card__media rounded-3xl aspect-[4/3] overflow-hidden">
+                <img src="assets/images/plant.jpg" alt="EcoScrap team working at a certified recycling facility" loading="lazy" width="1600" height="900">
+            </div>
+            <div class="absolute -bottom-6 -left-4 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl px-5 py-4 border border-gray-100 dark:border-gray-700">
+                <p class="font-bold text-gray-900 dark:text-white">Est. 2024</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Zero-waste mission from day one</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3 · Mission, Vision & Values -->
+<section data-section="3" class="section bg-lightBg dark:bg-[#0d1726]">
+    <div class="container-es">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="es-eyebrow es-reveal">What Drives Us</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">Mission, Vision &amp; Values</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <div class="es-panel es-panel--hover es-reveal"><span class="es-card__icon"><i class="fa-solid fa-bullseye"></i></span><h3 class="es-card__title mt-4">Our Mission</h3><p class="es-card__text mt-2">Make recycling as easy as ordering groceries — booked, transparent and rewarding for every household.</p></div>
+            <div class="es-panel es-panel--hover es-reveal" data-reveal-delay="60"><span class="es-card__icon"><i class="fa-solid fa-eye"></i></span><h3 class="es-card__title mt-4">Our Vision</h3><p class="es-card__text mt-2">A zero-waste society where nothing valuable ever reaches landfill and every citizen is paid for recycling.</p></div>
+            <div class="es-panel es-panel--hover es-reveal" data-reveal-delay="120"><span class="es-card__icon"><i class="fa-solid fa-scale-balanced"></i></span><h3 class="es-card__title mt-4">Fairness First</h3><p class="es-card__text mt-2">Verified weights, published rates and no last-minute deductions — trust is our only brand.</p></div>
+            <div class="es-panel es-panel--hover es-reveal" data-reveal-delay="180"><span class="es-card__icon"><i class="fa-solid fa-leaf"></i></span><h3 class="es-card__title mt-4">Planet + People</h3><p class="es-card__text mt-2">Every pickup creates income for a citizen and keeps material in the circular economy.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 4 · Environmental Responsibility -->
+<section data-section="4" class="section bg-white dark:bg-gray-900">
+    <div class="container-es grid lg:grid-cols-2 gap-12 items-center">
+        <div class="relative es-reveal">
+            <div class="es-card__media rounded-3xl aspect-[4/3] overflow-hidden">
+                <img src="assets/images/industrial-waste.jpg" alt="Industrial waste being segregated and routed to certified recycling facilities" loading="lazy" width="1024" height="751">
+            </div>
+        </div>
+        <div>
+            <span class="es-eyebrow es-reveal">Responsibility</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">Every Kilogram Goes to a Certified Destination</h2>
+            <p class="es-subtitle mt-5 es-reveal" data-reveal-delay="120">Recycling can be greenwashing if the chain isn't audited. We track each consignment from your doorstep to the receiver, and share the summary on request.</p>
+            <ul class="mt-7 space-y-4 es-reveal" data-reveal-delay="180">
+                <li class="flex items-start gap-3"><span class="es-card__icon"><i class="fa-solid fa-file-shield"></i></span><span><strong class="block text-gray-900 dark:text-white">Handover manifests</strong><span class="text-sm text-gray-500 dark:text-gray-400">Consignment-level records available in your dashboard.</span></span></li>
+                <li class="flex items-start gap-3"><span class="es-card__icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span><span><strong class="block text-gray-900 dark:text-white">Audited facilities</strong><span class="text-sm text-gray-500 dark:text-gray-400">Partner recyclers licensed under E-Waste and Hazardous Waste rules.</span></span></li>
+                <li class="flex items-start gap-3"><span class="es-card__icon"><i class="fa-solid fa-recycle"></i></span><span><strong class="block text-gray-900 dark:text-white">Closed-loop reporting</strong><span class="text-sm text-gray-500 dark:text-gray-400">We measure energy saved, water saved and emissions avoided.</span></span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 5 · Our Team -->
+<section data-section="5" class="section bg-lightBg dark:bg-[#0d1726]">
+    <div class="container-es">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="es-eyebrow es-reveal">The People</span>
+            <h2 class="es-title mt-4 es-reveal" data-reveal-delay="60">Meet the Core Team</h2>
+            <p class="es-subtitle mt-4 es-reveal" data-reveal-delay="120">Ops-led, tech-enabled and ground-tested — the team behind 42,000+ pickups.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-7 mt-12">
+            <!-- Rahul Sharma -->
+            <div class="es-card es-reveal">
+                <div class="es-card__body items-center text-center">
+                    <img src="assets/images/team-rahul.jpg" alt="Rahul Sharma" class="w-20 h-20 rounded-full object-cover shadow-md border-2 border-primary/20" loading="lazy" width="400" height="400">
+                    <h3 class="es-card__title mt-3">Rahul Sharma</h3>
+                    <p class="text-xs text-primary font-semibold uppercase tracking-wide">Founder &amp; CEO</p>
+                    <p class="es-card__text text-sm text-center">Built the first pickup route by hand in 2024.</p>
+                </div>
+            </div>
+            <!-- Anita Kulkarni -->
+            <div class="es-card es-reveal" data-reveal-delay="60">
+                <div class="es-card__body items-center text-center">
+                    <img src="assets/images/team-anita.jpg" alt="Anita Kulkarni" class="w-20 h-20 rounded-full object-cover shadow-md border-2 border-primary/20" loading="lazy" width="400" height="400">
+                    <h3 class="es-card__title mt-3">Anita Kulkarni</h3>
+                    <p class="text-xs text-primary font-semibold uppercase tracking-wide">Operations</p>
+                    <p class="es-card__text text-sm text-center">Runs field teams and the certified recycler network.</p>
+                </div>
+            </div>
+            <!-- David Mehta -->
+            <div class="es-card es-reveal" data-reveal-delay="120">
+                <div class="es-card__body items-center text-center">
+                    <img src="assets/images/team-david.jpg" alt="David Mehta" class="w-20 h-20 rounded-full object-cover shadow-md border-2 border-primary/20" loading="lazy" width="400" height="400">
+                    <h3 class="es-card__title mt-3">David Mehta</h3>
+                    <p class="text-xs text-primary font-semibold uppercase tracking-wide">Logistics</p>
+                    <p class="es-card__text text-sm text-center">Schedules every slot and every collection route.</p>
+                </div>
+            </div>
+            <!-- Neha Bansal -->
+            <div class="es-card es-reveal" data-reveal-delay="180">
+                <div class="es-card__body items-center text-center">
+                    <img src="assets/images/team-neha.jpg" alt="Neha Bansal" class="w-20 h-20 rounded-full object-cover shadow-md border-2 border-primary/20" loading="lazy" width="400" height="400">
+                    <h3 class="es-card__title mt-3">Neha Bansal</h3>
+                    <p class="text-xs text-primary font-semibold uppercase tracking-wide">Compliance</p>
+                    <p class="es-card__text text-sm text-center">Owns audits, manifests and e-waste certificates.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 6 · CTA -->
+<section data-section="6" class="section bg-white dark:bg-gray-900">
+    <div class="container-es">
+        <div class="relative overflow-hidden rounded-3xl bg-primaryDark es-reveal">
+            <div class="absolute inset-0 opacity-15 hero__media" style="background-image:url('assets/images/green.jpg')"></div>
+            <div class="relative z-10 px-6 sm:px-12 py-14 sm:py-16 text-center text-white">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Join Us in Making a Difference</h2>
+                <p class="mt-4 text-gray-200 max-w-xl mx-auto">Create a free account, book your first pickup and become part of the zero-waste movement — it takes two minutes and costs nothing to start.</p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+                    <a href="signup.html" class="es-btn es-btn--primary es-btn--lg"><i class="fa-solid fa-user-plus"></i> Sign Up Today</a>
+                    <a href="rate-card.html" class="es-btn es-btn--white es-btn--lg">About Our Rates</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+<footer class="bg-primaryDark text-white pt-16 pb-8 mt-auto">
+    <div class="container-es">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-10 mb-12">
+            <div class="xl:col-span-2 max-w-md">
+                <a href="index.html" class="flex items-center gap-2 mb-5">
+                    <span class="es-logo__mark"><i class="fa-solid fa-recycle"></i></span>
+                    <span class="text-2xl font-bold text-white">EcoScrap</span>
+                </a>
+                <p class="text-gray-300 mb-6 text-sm leading-relaxed">Your trusted local waste pickup and scrap dealer. Book a doorstep pickup, get transparent weighing and instant payment — while keeping waste out of landfill.</p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="about.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>About Us</a></li>
+                    <li><a href="services.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Services</a></li>
+                    <li><a href="rate-card.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Scrap Rates</a></li>
+                    <li><a href="how-it-works.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>How It Works</a></li>
+                    <li><a href="blog.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Scrap Categories</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="rate-card.html#paper" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Paper &amp; Cardboard</a></li>
+                    <li><a href="rate-card.html#metal" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Metal &amp; Aluminum</a></li>
+                    <li><a href="rate-card.html#plastic" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Plastic &amp; Packaging</a></li>
+                    <li><a href="rate-card.html#ewaste" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>E-Waste</a></li>
+                    <li><a href="rate-card.html#appliance" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Old Appliances</a></li>
+                    <li><a href="rate-card.html#battery" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-angle-right text-primaryLight text-xs"></i>Batteries</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Service Locations</h4>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Delhi NCR</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Mumbai</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Bangalore</a></li>
+                    <li><a href="index.html#locations" class="hover:text-white flex items-center gap-2 transition"><i class="fa-solid fa-location-dot text-primaryLight text-xs"></i>Pune · Hyderabad · Chennai</a></li>
+                </ul>
+                <div class="mt-5 space-y-2 text-sm text-gray-300">
+                    <p><i class="fa-solid fa-phone text-primaryLight me-2"></i>1800-266-5432</p>
+                    <p><i class="fa-solid fa-envelope text-primaryLight me-2"></i>hello@ecoscrap.in</p>
+                    <p><i class="fa-solid fa-clock text-primaryLight me-2"></i>Mon – Sun · 7 AM – 9 PM</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-5">Newsletter</h4>
+                <p class="text-gray-300 text-sm mb-4">Get rate updates, recycling tips and pickup offers. No spam.</p>
+                <form id="newsletter-form" class="flex flex-col gap-3">
+                    <input type="email" name="email" placeholder="Your email address" class="es-input !bg-white/10 !border-white/25 !text-white placeholder:!text-gray-300" aria-label="Email for newsletter">
+                    <button type="submit" class="es-btn es-btn--primary es-btn--block">Subscribe</button>
+                </form>
+                <p class="text-xs text-gray-400 mt-3">Join 8,200+ households already recycling with us.</p>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-7 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
+            <p>&copy; 2026 EcoScrap. All rights reserved. Made for a cleaner India.</p>
+            <div class="flex gap-5">
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms &amp; Conditions</a>
+                <a href="#" class="hover:text-white transition">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
