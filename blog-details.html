@@ -76,7 +76,7 @@
 
             <div class="es-nav__actions">
                 <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle aria-label="Toggle RTL layout" title="Toggle RTL layout">
-                    <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+                    <span data-rtl-label>RTL</span>
                 </button>
                 <button type="button" class="es-iconbtn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
                     <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
@@ -84,8 +84,8 @@
 
                 <!-- Guest actions: shown only when no EcoScrap session exists -->
     <div class="flex items-center gap-1.5" data-auth-guest>
-    <a href="login.html" class="es-nav__link" title="Login">Login</a>
-    <a href="signup.html" class="es-btn es-btn--primary es-btn--sm">Sign Up</a>
+    <a href="signup.html" class="es-btn es-btn--ghost es-btn--sm">Sign Up</a>
+    <a href="login.html" class="es-btn es-btn--primary es-btn--sm" title="Login">Login</a>
     </div>
 
 
@@ -138,12 +138,12 @@
                 <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin</a>
             </div>
             <div class="flex items-center gap-2 pt-4">
-                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><i class="fa-solid fa-language"></i> <span data-rtl-label>RTL</span></button>
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><span data-rtl-label>RTL</span></button>
                 <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke"></i> <span data-theme-label>Dark Mode</span></button>
             </div>
             <div class="flex gap-2 pt-4" data-auth-guest>
-                <a href="login.html" class="es-btn es-btn--ghost es-btn--block">Login</a>
-                <a href="signup.html" class="es-btn es-btn--primary es-btn--block">Sign Up</a>
+                <a href="signup.html" class="es-btn es-btn--ghost es-btn--block">Sign Up</a>
+                <a href="login.html" class="es-btn es-btn--primary es-btn--block">Login</a>
             </div>
             <div class="pt-2 space-y-1" data-auth-user hidden>
                 <p class="es-mobile__label px-3 pt-2">Account</p>
@@ -158,7 +158,7 @@
 
 <!-- 1 · Hero -->
 <section data-section="1" class="hero">
-    <div class="hero__media" style="background-image:url('assets/images/boxes.jpg')" role="img" aria-label="Recyclable material on a doorstep pickup"></div>
+    <div class="hero__media" style="background-image:url('assets/images/laptop.jpg')" role="img" aria-label="Recyclable material on a doorstep pickup"></div>
     <div class="hero__overlay hero__overlay--dark"></div>
     <div class="container-es relative z-10 py-20 lg:py-24 text-center">
         <span class="es-eyebrow es-reveal" id="bd-category">Insights</span>
@@ -175,7 +175,7 @@
 <section data-section="2" class="section bg-white dark:bg-gray-900">
     <div class="container-es max-w-4xl">
         <div class="es-card__media es-card__media--wide rounded-3xl overflow-hidden es-reveal">
-            <img src="assets/images/boxes.jpg" alt="Illustrative article banner — recyclable materials" width="1600" height="900" id="bd-banner" class="w-full h-full object-cover">
+            <img src="assets/images/paper-hero.jpg" alt="Illustrative article banner — recyclable materials" width="1600" height="900" id="bd-banner" class="w-full h-full object-cover">
         </div>
         <div class="es-prose pt-10 es-reveal" id="bd-body">
             <h2>The quiet economics of your bin</h2>
@@ -217,7 +217,7 @@
     <div class="container-es max-w-4xl">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 es-reveal">
             <h3 class="font-bold text-lg text-gray-900 dark:text-white">Enjoyed this read?</h3>
-            <div class="flex gap-2">
+            <div class="flex flex-wrap gap-2">
                 <button type="button" class="es-chip" data-share-link><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
                 <button type="button" class="es-chip" data-share-link><i class="fa-brands fa-x-twitter"></i> X</button>
                 <button type="button" class="es-chip" data-share-link><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
@@ -243,7 +243,7 @@
 <section data-section="6" class="section bg-white dark:bg-gray-900">
     <div class="container-es">
         <div class="relative overflow-hidden rounded-3xl bg-primaryDark es-reveal">
-            <div class="absolute inset-0 opacity-15 hero__media" style="background-image:url('assets/images/green.jpg')"></div>
+            <div class="absolute inset-0 opacity-15 hero__media" style="background-image:url('assets/images/blog-corporate.jpg')"></div>
             <div class="relative z-10 px-6 sm:px-12 py-14 sm:py-16 text-center text-white">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Empowered by Better Rates?</h2>
                 <p class="mt-4 text-gray-200 max-w-xl mx-auto">Create an account to convert what you just read into a booked doorstep pickup — and a payout to match.</p>

@@ -76,7 +76,7 @@
 
             <div class="es-nav__actions">
                 <button type="button" class="es-iconbtn es-iconbtn--pill" data-rtl-toggle aria-label="Toggle RTL layout" title="Toggle RTL layout">
-                    <i class="fa-solid fa-language"></i><span data-rtl-label>RTL</span>
+                    <span data-rtl-label>RTL</span>
                 </button>
                 <button type="button" class="es-iconbtn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
                     <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun hidden text-yellow-400"></i>
@@ -84,8 +84,8 @@
 
                 <!-- Guest actions: shown only when no EcoScrap session exists -->
     <div class="flex items-center gap-1.5" data-auth-guest>
-    <a href="login.html" class="es-nav__link" title="Login">Login</a>
-    <a href="signup.html" class="es-btn es-btn--primary es-btn--sm">Sign Up</a>
+    <a href="signup.html" class="es-btn es-btn--ghost es-btn--sm">Sign Up</a>
+    <a href="login.html" class="es-btn es-btn--primary es-btn--sm" title="Login">Login</a>
     </div>
 
 
@@ -138,12 +138,12 @@
                 <a href="admin-dashboard.html" class="es-mobile__link"><i class="fa-solid fa-user-shield"></i> Admin</a>
             </div>
             <div class="flex items-center gap-2 pt-4">
-                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><i class="fa-solid fa-language"></i> <span data-rtl-label>RTL</span></button>
+                <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-rtl-toggle aria-label="Toggle RTL layout"><span data-rtl-label>RTL</span></button>
                 <button type="button" class="es-btn es-btn--ghost es-btn--sm flex-1" data-theme-toggle aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke"></i> <span data-theme-label>Dark Mode</span></button>
             </div>
             <div class="flex gap-2 pt-4" data-auth-guest>
-                <a href="login.html" class="es-btn es-btn--ghost es-btn--block">Login</a>
-                <a href="signup.html" class="es-btn es-btn--primary es-btn--block">Sign Up</a>
+                <a href="signup.html" class="es-btn es-btn--ghost es-btn--block">Sign Up</a>
+                <a href="login.html" class="es-btn es-btn--primary es-btn--block">Login</a>
             </div>
             <div class="pt-2 space-y-1" data-auth-user hidden>
                 <p class="es-mobile__label px-3 pt-2">Account</p>
@@ -158,7 +158,7 @@
 
 <!-- 1 · Hero -->
 <section data-section="1" class="hero">
-    <div class="hero__media" style="background-image:url('https://hurdahurdacisi.com/uploads/2023/11/istanbul-hurdaci.jpg.webp')" role="img" aria-label="Recycling collection vehicle on a doorstep scrap pickup"></div>
+    <div class="hero__media" style="background-image:url('assets/images/hero-pickup.jpg')" role="img" aria-label="Recycling collection vehicle on a doorstep scrap pickup"></div>
     <div class="hero__overlay hero__overlay--dark"></div>
     <div class="container-es relative z-10 py-24 lg:py-32">
         <div class="max-w-3xl">
@@ -288,12 +288,14 @@
                 <a href="rate-card.html" class="es-btn es-btn--primary es-btn--lg">View Full Rate Card <i class="fa-solid fa-arrow-right rtl-flip"></i></a>
             </div>
         </div>
-        <div class="lg:col-span-3 es-reveal" data-reveal-delay="120">
+        <div class="lg:col-span-3 min-w-0 es-reveal" data-reveal-delay="120">
             <div class="es-card es-reveal overflow-hidden">
+<div class="overflow-x-auto thin-scroll">
 <table class="es-table">
     <thead><tr><th>Material</th><th>Category</th><th>Unit</th><th class="!text-right">Price</th></tr></thead>
     <tbody><tr><td class='font-medium text-gray-900 dark:text-gray-100'>Newspaper (White)</td><td class='text-gray-500 dark:text-gray-400'>Paper</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 14</td></tr><tr><td class='font-medium text-gray-900 dark:text-gray-100'>Corrugated Cardboard</td><td class='text-gray-500 dark:text-gray-400'>Paper</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 16</td></tr><tr><td class='font-medium text-gray-900 dark:text-gray-100'>Iron Scrap (Clean)</td><td class='text-gray-500 dark:text-gray-400'>Metal</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 28</td></tr><tr><td class='font-medium text-gray-900 dark:text-gray-100'>Copper Scrap</td><td class='text-gray-500 dark:text-gray-400'>Metal</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 385</td></tr><tr><td class='font-medium text-gray-900 dark:text-gray-100'>PET Bottles (Clear)</td><td class='text-gray-500 dark:text-gray-400'>Plastic</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 15</td></tr><tr><td class='font-medium text-gray-900 dark:text-gray-100'>Laptop E-Waste</td><td class='text-gray-500 dark:text-gray-400'>E-Waste</td><td class='text-gray-500 dark:text-gray-400'>per Kg</td><td class='text-end font-bold text-primary dark:text-primaryLight whitespace-nowrap'>₹ 45</td></tr></tbody>
 </table>
+</div>
 <div class="px-5 py-4 text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-[#182130] rounded-b-2xl">
     <i class="fa-solid fa-circle-info me-1.5 text-primary"></i>
     Indicative rates. Actual payout depends on material quality, moisture and verified weight at pickup.

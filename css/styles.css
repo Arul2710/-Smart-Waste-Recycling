@@ -376,7 +376,7 @@ p {
   padding: 0.7rem 0.9rem;
   font-size: 0.9375rem;
   color: #111827;
-  background: #fff;
+  background-color: #fff;
   border: 1px solid #d1d5db;
   border-radius: 0.8rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.25s ease;
@@ -395,7 +395,7 @@ p {
 .dark .es-input,
 .dark .es-select,
 .dark .es-textarea {
-  background: var(--es-dark-surface-2);
+  background-color: var(--es-dark-surface-2);
   border-color: #374151;
   color: #f1f5f9;
 }
@@ -681,12 +681,18 @@ button.es-nav__link,
 .es-drop__sep { height: 1px; margin: 0.35rem 0.4rem; background: rgb(229 231 235); }
 .dark .es-drop__sep { background: rgb(55 65 81); }
 
-/* Mobile drawer */
+/* Mobile drawer — positioned below the sticky header so it overlays content
+   instead of expanding the header in normal flow (which used to push the hero down). */
 .es-mobile {
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  z-index: 59;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   border-top-width: 0;
+  box-shadow: 0 24px 40px -28px rgba(15, 23, 42, 0.5);
   transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, border-color 0.3s ease;
 }
 .es-mobile.is-open {
@@ -893,6 +899,7 @@ button.es-nav__link,
   font-weight: 600; font-size: 1rem; color: #111827;
 }
 .dark .es-acc__btn { color: #f1f5f9; }
+.es-acc__btn > span { min-width: 0; }
 .es-acc__btn i { transition: transform 0.3s ease; color: var(--es-primary); flex: none; }
 .es-acc__panel { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 .es-acc__panel.is-open { max-height: 40rem; }
